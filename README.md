@@ -1,1 +1,1 @@
-bot for vk on python3 language
+Bot for vk on python3 language
