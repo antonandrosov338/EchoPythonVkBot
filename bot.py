@@ -2,8 +2,8 @@ from vk_api import VkApi
 from vk_api.utils import get_random_id 
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType 
 
-id = 164875377
-token = "26085de8b445c57bf9808313b0475ee6b31324d1a6fc1de443ca8e6fa4e8c9df57348b5bcba38ef7c5279"
+id = 0
+token = ""
 
 vk_session = VkApi(token=token)
 longpoll = VkBotLongPoll(vk_session, id)
@@ -11,9 +11,8 @@ longpoll = VkBotLongPoll(vk_session, id)
 vk = vk_session.get_api()
 
 messages = {
-	"привет":"Привет, лошпед)))",
-	"как дела?":"Да норм чел",
-	"погнали выйдем":"Ты че баран, погнали раз на раз с братками",
+	"message1":"Hello, world!",
+	"message2":"Hi!",
 }
 
 def send_message_user(peer_id, text):
@@ -29,7 +28,7 @@ def message_filter(message):
 			send_message_user(message['peer_id'], i[1])
 			return
 
-	send_message_user(message['peer_id'], "Не понял чё сморозил")
+	send_message_user(message['peer_id'], "Command not found")
 
 for event in longpoll.listen():
 	if event.type == VkBotEventType.MESSAGE_NEW and event.message['text']:
